@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arrow Function</title>
+    <style>
+        .wraper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 100;
+            color: #fff;
+            font-family: Operator Mono;
+        }
+        .box {
+            background: black url(img/section-bg.jpg) center fixed no-repeat;
+            width: 50px;
+            height: 50px;
+            padding:50px;
+            transition: width .2s , height .6s;
+            position: relative;
+        }
+        .box.opening {
+            width:500px;
+            height:500px;
+        }
+        .box h2 {
+            position: absolute;
+            width:100%;
+            font-size: 100px;
+            transform: translateX(-200%);
+            top:0;
+            transition: all .5s linear;
+        }
+        .box p {
+            position: absolute;
+            width:100%;
+            transform: translateX(200%);
+            bottom:0;
+            transition: all .5s linear;
+        }
+        .box.open > * {
+            transform: translateX(0)
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wraper">
+        <div class="box">
+            <h2>Shaon Kabir</h2>
+            <p class="social">@Shaonkabir</p>
+        </div>
+    </div>
+
+<script>
+    const box = document.querySelector('.box');
+    box.addEventListener('click', function() {
+        let first = 'opening';
+        let second = 'open';
+
+        if(this.classList.contains(first)) {
+            [first , second] = [second ,first];
+        }
+
+        this.classList.toggle(first)
+        setTimeout(() => {
+            this.classList.toggle(second)
+        },500)
+    })
+
+</script>
+
+</body>
+</html>
