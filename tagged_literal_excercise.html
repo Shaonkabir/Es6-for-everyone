@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tagged Literal Excercise</title>
+</head>
+<body>
+    <div class="bio">
+
+    </div>
+
+<script>
+
+    const dict = {
+        HTML : 'Hyper Text Markup Language',
+        CSS: 'Cascading Style Sheet',
+        JS: 'JavaScript'
+    }
+
+    function addAbbreViations(strings , ...values) {
+        const abbreViation = values.map(value => {
+            if(dict[value]) {
+                return `<abbr title="${dict[value]}">${value}</abbr>`
+            }
+            return value;
+        })
+        return strings.reduce((sentense, string, i) => {
+            return `${sentense}${string}${abbreViation[i] || ''}`;
+        }, '')
+    }
+
+    const firstName = 'Shaon';
+    const lastName = 'Kabir';
+
+    const sentense = addAbbreViations`I'm ${firstName} ${lastName}. I love to code in ${'HTML'}, ${'CSS'} , ${'JS'}`;
+
+    const bio = document.querySelector('.bio');
+    const p = document.createElement('p');
+    p.innerHTML = sentense;
+    bio.appendChild(p);
+
+</script>
+
+</body>
+</html>
