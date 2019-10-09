@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Fragment Template Literal</title>
+</head>
+<body>
+    
+
+<script>
+    const person = {
+        name: 'Shaon kabir',
+        job: 'Web Developer',
+        city: 'Jashore, Khulna, Bangladesh',
+        bio: 'Iam really a cool guy that loves to teach web development!',
+    };
+    const markupOne =  `
+        <h2>Hi, This is ${person.name} - a ${person.job} from ${person.city}</h2>
+        <p>${person.bio}</p>
+    `;
+    // document.body.innerHTML = markupOne;
+
+    const song = {
+        name: 'Dying to live',
+        artist: 'Tupac',
+        featuring: 'Biggie Smalls'
+    };
+    // Ternary Operator
+    const markupTwo = `
+        <h3>${song.name} - ${song.artist}</h3>
+        ${song.featuring ? `(Featuring ${song.featuring})` : ''}
+    `;
+    // document.body.innerHTML = markupTwo;
+
+    const dogs = [
+        { name: 'Snickers', age: 2 },
+        { name: 'Hugo', age: 8 },
+        { name: 'Sunny', age: 1 }
+    ];
+    const markupThree = `
+        <ul>
+            ${dogs.map(dog => `<li>${dog.name} is ${dog.age * 7} years old</li>`).join('')}    
+        </ul>
+    `;
+    // document.body.innerHTML = markupThree;
+
+    const beer = {
+        name: 'Belgian Wit',
+        brewery: 'Steam Whistle Brewery',
+        keywords: ['pale', 'cloudy', 'spiced', 'crisp']
+    };
+    function renderKeywords(keywords) {
+        return `
+            <ul>
+                ${keywords.map(keyword => `<li>${keyword}</li>`).join('')}    
+            </ul>
+        `;
+    }
+    const markupFour =  `
+        <h2>${beer.name}</h2>
+        <h5>${beer.brewery}</h5>
+        ${renderKeywords(beer.keywords)}
+    `;
+    document.body.innerHTML = markupFour;
+
+</script>
+
+</body>
+</html>
